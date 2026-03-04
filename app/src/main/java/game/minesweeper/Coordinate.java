@@ -1,7 +1,7 @@
 package game.minesweeper;
 
 
-public record Coordinate(int row, int column) {
+public record Coordinate(int row, int column) implements CoordinateInterface {
 
     public boolean isFeasible() {
         return row >= 0 && column >= 0;
