@@ -16,6 +16,10 @@ public class Game {
 
         Cell cell = grid.getCell(coordinate);
 
+        if (cell.isRevealed() || cell.isFlagged()) {
+            return;
+        }
+
         if (cell.hasMine()) {
             gameState = GameState.LOST;
             return;

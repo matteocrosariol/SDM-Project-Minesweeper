@@ -69,4 +69,17 @@ public class GameTest {
 
         assertEquals(GameState.WON, game.getState());
     }
+
+    @Test
+    void flaggedCellCannotBeOpened(){
+        Grid grid = new Grid(2, 2);
+        Coordinate cell = new Coordinate(1,1);
+
+        Game game = new Game(grid);
+
+        grid.getCell(cell).toggleFlag();
+        game.openCell(cell);
+
+        assertFalse(grid.getCell(cell).isRevealed());
+    }
 }
