@@ -22,9 +22,10 @@ public class GameTest {
     @Test
     public void openingSafeCellRevealsIt(){
         Grid grid = new Grid(2,2);
+        Game game = new Game(grid);
         Coordinate safe = new Coordinate(1,1);
 
-        Game game = new Game(grid);
+
         game.openCell(safe);
 
         assertTrue(grid.getCell(safe).isRevealed());
@@ -32,8 +33,8 @@ public class GameTest {
 
     @Test
     public void openingSafeCellContinuesTheGame(){
-
         Grid grid = new Grid(2,2);
+        Game game = new Game(grid);
         GridInitializer initializer = new GridInitializer(grid);
 
         Coordinate mine = new Coordinate(1,1);
@@ -41,7 +42,7 @@ public class GameTest {
 
         initializer.placeMine(mine);
 
-        Game game = new Game(grid);
+
         game.openCell(safe);
 
         assertEquals(GameState.RUNNING, game.getState());
