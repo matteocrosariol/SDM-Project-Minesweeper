@@ -11,15 +11,11 @@ public class Game {
 
     public void openCell(Coordinate coordinate) {
 
-        if (gameState != GameState.RUNNING) {
-            return;
-        }
+        if (gameState != GameState.RUNNING) return;
 
         Cell cell = grid.getCell(coordinate);
 
-        if (cell.isRevealed() || cell.isFlagged()) {
-            return;
-        }
+        if (cell == null || cell.isRevealed() || cell.isFlagged()) return;
 
         if (cell.hasMine()) {
             gameState = GameState.LOST;
@@ -48,14 +44,6 @@ public class Game {
         }
     }
 
-    private Coordinate findCoordinateOfCell(Cell targetCell) {
-        for (Coordinate c : grid.getAllCoordinates()) {
-            if (grid.getCell(c) == targetCell) {
-                return c;
-            }
-        }
-        return null;
-    }
 
     private void checkWinCondition() {
         for (Cell cell : grid.getAllCells()) {
