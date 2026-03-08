@@ -10,6 +10,7 @@ public class Game {
     }
 
     public void openCell(Coordinate coordinate) {
+
         if (gameState != GameState.RUNNING) {
             return;
         }
@@ -25,9 +26,40 @@ public class Game {
             return;
         }
 
-        cell.reveal();
-        checkWinCondition();
+        revealRecursively(coordinate);
 
+        checkWinCondition();
+    }
+
+    private void revealRecursively(Coordinate coordinate) {
+
+        Cell cell = grid.getCell(coordinate);
+
+        if (cell == null || cell.isRevealed() || cell.isFlagged()) {
+            return;
+        }
+
+        cell.reveal();
+
+        if (cell.neighborsMineCount() == 0) {
+            for (Cell neighbor : grid.getCellNeighbors(coordinate)) {
+
+                Coordinate neighborCoordinate = findCoordinateOfCell(neighbor);
+
+                if (neighborCoordinate != null) {
+                    revealRecursively(neighborCoordinate);
+                }
+            }
+        }
+    }
+
+    private Coordinate findCoordinateOfCell(Cell targetCell) {
+        for (Coordinate c : grid.getAllCoordinates()) {
+            if (grid.getCell(c) == targetCell) {
+                return c;
+            }
+        }
+        return null;
     }
 
     private void checkWinCondition() {
