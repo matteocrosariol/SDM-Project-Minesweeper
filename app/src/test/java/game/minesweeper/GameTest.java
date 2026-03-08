@@ -111,4 +111,19 @@ public class GameTest {
         }
     }
 
+    @Test
+    void flaggedCellCanBeUnflaggedAndOpened() {
+        Grid grid = new Grid(2,2);
+        Coordinate c = new Coordinate(1,1);
+
+        Game game = new Game(grid);
+
+        grid.getCell(c).toggleFlag();
+        grid.getCell(c).toggleFlag();
+
+        game.openCell(c);
+
+        assertTrue(grid.getCell(c).isRevealed());
+    }
+
 }
