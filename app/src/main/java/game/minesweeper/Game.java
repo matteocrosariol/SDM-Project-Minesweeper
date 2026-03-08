@@ -42,13 +42,8 @@ public class Game {
         cell.reveal();
 
         if (cell.neighborsMineCount() == 0) {
-            for (Cell neighbor : grid.getCellNeighbors(coordinate)) {
-
-                Coordinate neighborCoordinate = findCoordinateOfCell(neighbor);
-
-                if (neighborCoordinate != null) {
-                    revealRecursively(neighborCoordinate);
-                }
+            for(Coordinate neighbor : grid.getNeighborCoordinates(coordinate)) {
+                revealRecursively(neighbor);
             }
         }
     }
