@@ -9,11 +9,13 @@ public class GameTest {
     @Test
     public void openingAMineEndsTheGame() {
         Grid grid = new Grid(2,2);
-        Coordinate mine = new Coordinate(1,1);
-        grid.getCell(mine).placeMine();
-
         Game game = new Game(grid);
+        GridInitializer initializer = new GridInitializer(grid);
+        Coordinate mine = new Coordinate(1,1);
+
+        initializer.placeMine(mine);
         game.openCell(mine);
+
         assertEquals(GameState.LOST, game.getState());
     }
 
@@ -48,11 +50,13 @@ public class GameTest {
     @Test
     public void cannotOpenCellAfterGameIsLost(){
         Grid grid = new Grid(2,2);
+        Game game = new Game(grid);
+        GridInitializer initializer = new GridInitializer(grid);
         Coordinate mine = new Coordinate(1,1);
 
-        grid.getCell(mine).placeMine();
+        initializer.placeMine(mine);
 
-        Game game = new Game(grid);
+
         game.openCell(mine); //lose
 
         Coordinate other = new Coordinate(1,2);
@@ -63,13 +67,15 @@ public class GameTest {
     @Test
     void gameIsWonWhenAllSafeCellsAreRevealed() {
         Grid grid = new Grid(1, 2);
+        Game game = new Game(grid);
+        GridInitializer initializer = new GridInitializer(grid);
 
         Coordinate mine = new Coordinate(1,1);
         Coordinate safe = new Coordinate(1,2);
 
-        grid.getCell(mine).placeMine();
+        initializer.placeMine(mine);
 
-        Game game = new Game(grid);
+
 
         game.openCell(safe);
 
