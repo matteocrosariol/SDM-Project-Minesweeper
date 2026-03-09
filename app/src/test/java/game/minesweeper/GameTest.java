@@ -90,7 +90,7 @@ public class GameTest {
 
         Game game = new Game(grid);
 
-        grid.getCell(cell).toggleFlag();
+        game.toggleFlag(cell);
         game.openCell(cell);
 
         assertFalse(grid.getCell(cell).isRevealed());
@@ -118,8 +118,8 @@ public class GameTest {
 
         Game game = new Game(grid);
 
-        grid.getCell(c).toggleFlag();
-        grid.getCell(c).toggleFlag();
+        game.toggleFlag(c);
+        game.toggleFlag(c);
 
         game.openCell(c);
 

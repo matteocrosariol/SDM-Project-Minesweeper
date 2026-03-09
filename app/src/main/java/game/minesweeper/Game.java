@@ -44,6 +44,17 @@ public class Game {
         }
     }
 
+    public void toggleFlag(Coordinate coordinate) {
+
+        if (gameState != GameState.RUNNING) return;
+
+        Cell cell = grid.getCell(coordinate);
+
+        if (cell == null || cell.isRevealed()) return;
+
+        cell.toggleFlag();
+    }
+
 
     private void checkWinCondition() {
         for (Cell cell : grid.getAllCells()) {
