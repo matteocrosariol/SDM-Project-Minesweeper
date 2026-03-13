@@ -26,6 +26,19 @@ public abstract class AbstractGrid<C extends CoordinateInterface> implements Gri
     }
 
     @Override
+    public List<Cell> getCellNeighbors(C coordinate) {
+
+        List<Cell> neighbors = new ArrayList<>();
+
+        for (C neighbor : getNeighborCoordinates(coordinate)) {
+            Cell cell = getCell(neighbor);
+            neighbors.add(cell);
+        }
+
+        return neighbors;
+    }
+
+    @Override
     public List<C> getAllCoordinates() {
         return new ArrayList<>(cells.keySet());
     }
