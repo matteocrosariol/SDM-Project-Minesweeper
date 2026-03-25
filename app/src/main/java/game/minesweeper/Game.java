@@ -19,6 +19,7 @@ public class Game {
 
         if (cell.hasMine()) {
             gameState = GameState.LOST;
+            cell.reveal();
             return;
         }
 
@@ -38,7 +39,7 @@ public class Game {
         cell.reveal();
 
         if (cell.neighborsMineCount() == 0) {
-            for(Coordinate neighbor : grid.getNeighborCoordinates(coordinate)) {
+            for (Coordinate neighbor : grid.getNeighborCoordinates(coordinate)) {
                 revealRecursively(neighbor);
             }
         }
