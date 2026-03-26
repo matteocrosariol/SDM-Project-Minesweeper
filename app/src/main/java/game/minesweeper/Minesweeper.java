@@ -6,21 +6,34 @@ import game.minesweeper.engine.GameController;
 import game.minesweeper.engine.GridInitializer;
 import game.minesweeper.grid.GridOfSquares;
 
+import java.util.Scanner;
+
+import static game.minesweeper.CLI.StartingMenu.startMenu;
+
 public class Minesweeper {
 
 
     public static void main(String[] args) {
 
-        GridOfSquares grid = new GridOfSquares(8, 8);
 
-        GridInitializer initializer = new GridInitializer(grid);
-        initializer.initialize(10);
+        System.out.println("Welcome to Minesweeper!");
 
-        Game game = new Game(grid);
-        GameController controller = new GameController(game);
+        Scanner scanner = new Scanner(System.in);
+        String newGame;
 
-        ConsoleUI ui = new ConsoleUI();
-        ui.start(controller, grid);
+        do {
+            GridOfSquares grid = startMenu();
+
+            Game game = new Game(grid);
+            GameController controller = new GameController(game);
+
+            ConsoleUI ui = new ConsoleUI();
+            ui.start(controller, grid);
+
+            System.out.println("Do you want to start a new game?");
+            newGame = scanner.next().toLowerCase();
+
+        } while (newGame.equals("yes") || newGame.equals("y"));
     }
 
 }

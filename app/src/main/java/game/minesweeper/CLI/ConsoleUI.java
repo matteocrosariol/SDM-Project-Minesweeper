@@ -12,31 +12,38 @@ public class ConsoleUI {
 
         Scanner scanner = new Scanner(System.in);
 
+        GridPrinter.print(grid);
+
         while (controller.getGameState() == GameState.RUNNING) {
 
-            GridPrinter.print(grid);
+            System.out.println("Enter command to open a cell or to place/remove a flag:");
+            System.out.println("open(o) row col | flag(f) row col");
 
-            System.out.println("Enter command: open row col | flag row col");
-
-            String command = scanner.next();
+            String command = scanner.next().toLowerCase();
             int row = scanner.nextInt();
             int col = scanner.nextInt();
 
-            if (command.equals("open")) {
-                controller.open(row, col);
-            }
+            switch (command) {
+                case "open", "o":
+                    controller.open(row, col);
+                    GridPrinter.print(grid);
+                    break;
 
-            if (command.equals("flag")) {
-                controller.toggleFlag(row, col);
+                case "flag", "f":
+                    controller.toggleFlag(row, col);
+                    GridPrinter.print(grid);
+                    break;
+
+                default:
+                    System.out.println("Invalid command");
             }
         }
-
-        GridPrinter.print(grid);
 
         if (controller.getGameState() == GameState.WON) {
             System.out.println("You won!");
         } else {
             System.out.println("Game over!");
         }
+
     }
 }
