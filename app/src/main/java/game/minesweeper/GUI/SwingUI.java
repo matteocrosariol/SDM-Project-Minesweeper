@@ -170,7 +170,7 @@ public class SwingUI {
 
                 Cell cell = grid.getCell(r, c);
 
-                if (cell.isRevealed()){
+                if (cell.isRevealed()) {
                     if (cell.hasMine()) {
                         buttons[r][c].setText("*");
                         buttons[r][c].setBackground(Color.RED);
@@ -183,10 +183,10 @@ public class SwingUI {
                             buttons[r][c].setText(String.valueOf(count));
                         }
                     }
+                } else {
+                    if (cell.isFlagged()) buttons[r][c].setText("⚑");
+                    if (!cell.isFlagged()) buttons[r][c].setText("");
                 }
-
-
-                if (cell.isFlagged()) buttons[r][c].setText("⚑");
             }
         }
 
