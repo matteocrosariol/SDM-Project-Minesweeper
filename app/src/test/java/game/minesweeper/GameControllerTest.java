@@ -5,7 +5,7 @@ import game.minesweeper.engine.GameController;
 import game.minesweeper.engine.GameState;
 import game.minesweeper.engine.GridInitializer;
 import game.minesweeper.grid.Coordinate;
-import game.minesweeper.grid.GirdOfSquares;
+import game.minesweeper.grid.GridOfSquares;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,7 +14,7 @@ public class GameControllerTest {
     @Test
     void openCommandRevealsCell() {
 
-        GirdOfSquares grid = new GirdOfSquares(2,2);
+        GridOfSquares grid = new GridOfSquares(2,2);
         Game game = new Game(grid);
         GameController controller = new GameController(game);
 
@@ -26,7 +26,7 @@ public class GameControllerTest {
     @Test
     void flagCommandFlagsCell() {
 
-        GirdOfSquares grid = new GirdOfSquares(2,2);
+        GridOfSquares grid = new GridOfSquares(2,2);
         Game game = new Game(grid);
         GameController controller = new GameController(game);
 
@@ -38,7 +38,7 @@ public class GameControllerTest {
     @Test
     void openMineThroughControllerEndsGame() {
 
-        GirdOfSquares grid = new GirdOfSquares(2,2);
+        GridOfSquares grid = new GridOfSquares(2,2);
         Game game = new Game(grid);
         GameController controller = new GameController(game);
         GridInitializer initializer = new GridInitializer(grid);

@@ -5,7 +5,7 @@ import game.minesweeper.engine.GameController;
 import game.minesweeper.engine.GameState;
 import game.minesweeper.engine.GridInitializer;
 import game.minesweeper.grid.Cell;
-import game.minesweeper.grid.GirdOfSquares;
+import game.minesweeper.grid.GridOfSquares;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +14,7 @@ import java.awt.event.MouseEvent;
 
 public class SwingUI {
 
-    private GirdOfSquares grid;
+    private GridOfSquares grid;
     private GameController controller;
     private JButton[][] buttons;
     private GameState gameState;
@@ -22,7 +22,7 @@ public class SwingUI {
     private int mineCount;
 
 
-    public void start(GameController controller, GirdOfSquares grid, int mineCount) {
+    public void start(GameController controller, GridOfSquares grid, int mineCount) {
         this.grid = grid;
         this.controller = controller;
         this.gameState = controller.getGameState();
@@ -195,7 +195,7 @@ public class SwingUI {
 
 
     private void restartGame() {
-        GirdOfSquares newGrid = new GirdOfSquares(grid.getNumberOfRows(), grid.getNumberOfColumns());
+        GridOfSquares newGrid = new GridOfSquares(grid.getNumberOfRows(), grid.getNumberOfColumns());
         new GridInitializer(newGrid).initialize(mineCount);
         Game newGame = new Game(newGrid);
         GameController newController = new GameController(newGame);

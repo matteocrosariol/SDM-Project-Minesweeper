@@ -3,18 +3,18 @@ package game.minesweeper;
 import game.minesweeper.engine.GridInitializer;
 import game.minesweeper.grid.Cell;
 import game.minesweeper.grid.Coordinate;
-import game.minesweeper.grid.GirdOfSquares;
+import game.minesweeper.grid.GridOfSquares;
 import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class GirdInitializerTest {
+public class GridInitializerTest {
 
     @Test
     void properlyPlacedMine() {
-        GirdOfSquares grid = new GirdOfSquares(9, 9);
+        GridOfSquares grid = new GridOfSquares(9, 9);
         GridInitializer gridInitializer = new GridInitializer(grid);
         Coordinate coordinate = new Coordinate(6, 7);
         Cell cell = grid.getCell(coordinate);
@@ -28,7 +28,7 @@ public class GirdInitializerTest {
     @Test
     void properlyPlacedMines() {
 
-        GirdOfSquares grid = new GirdOfSquares(9, 9);
+        GridOfSquares grid = new GridOfSquares(9, 9);
         GridInitializer gridInitializer = new GridInitializer(grid);
         int mineCount = 0;
 
@@ -50,7 +50,7 @@ public class GirdInitializerTest {
 
     @Test
     void correctNeighborMineCountInCell() {
-        GirdOfSquares grid = new GirdOfSquares(9, 9);
+        GridOfSquares grid = new GridOfSquares(9, 9);
         GridInitializer initializer = new GridInitializer(grid);
         Coordinate c1 = new Coordinate(6, 6),
                 c2 = new Coordinate(6, 7),

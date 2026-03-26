@@ -2,7 +2,7 @@ package game.minesweeper.GUI;
 
 import game.minesweeper.engine.Game;
 import game.minesweeper.engine.GameController;
-import game.minesweeper.grid.GirdOfSquares;
+import game.minesweeper.grid.GridOfSquares;
 import game.minesweeper.engine.GridInitializer;
 
 public class MinesweeperGUI {
@@ -12,7 +12,7 @@ public class MinesweeperGUI {
         int rows = 9;
         int mines = 10;
 
-        GirdOfSquares grid = new GirdOfSquares(rows, columns);
+        GridOfSquares grid = new GridOfSquares(rows, columns);
         new GridInitializer(grid).initialize(mines);
 
         Game game = new Game(grid);

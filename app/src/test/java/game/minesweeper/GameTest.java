@@ -5,7 +5,7 @@ import game.minesweeper.engine.GameState;
 import game.minesweeper.engine.GridInitializer;
 import game.minesweeper.grid.Cell;
 import game.minesweeper.grid.Coordinate;
-import game.minesweeper.grid.GirdOfSquares;
+import game.minesweeper.grid.GridOfSquares;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,7 +14,7 @@ public class GameTest {
 
     @Test
     public void openingAMineEndsTheGame() {
-        GirdOfSquares grid = new GirdOfSquares(2,2);
+        GridOfSquares grid = new GridOfSquares(2,2);
         Game game = new Game(grid);
         GridInitializer initializer = new GridInitializer(grid);
         Coordinate mine = new Coordinate(1,1);
@@ -27,7 +27,7 @@ public class GameTest {
 
     @Test
     public void openingSafeCellRevealsIt(){
-        GirdOfSquares grid = new GirdOfSquares(2,2);
+        GridOfSquares grid = new GridOfSquares(2,2);
         Game game = new Game(grid);
         Coordinate safe = new Coordinate(1,1);
 
@@ -39,7 +39,7 @@ public class GameTest {
 
     @Test
     public void openingSafeCellContinuesTheGame(){
-        GirdOfSquares grid = new GirdOfSquares(2,2);
+        GridOfSquares grid = new GridOfSquares(2,2);
         Game game = new Game(grid);
         GridInitializer initializer = new GridInitializer(grid);
 
@@ -56,7 +56,7 @@ public class GameTest {
 
     @Test
     public void cannotOpenCellAfterGameIsLost(){
-        GirdOfSquares grid = new GirdOfSquares(2,2);
+        GridOfSquares grid = new GridOfSquares(2,2);
         Game game = new Game(grid);
         GridInitializer initializer = new GridInitializer(grid);
         Coordinate mine = new Coordinate(1,1);
@@ -73,7 +73,7 @@ public class GameTest {
 
     @Test
     void gameIsWonWhenAllSafeCellsAreRevealed() {
-        GirdOfSquares grid = new GirdOfSquares(1, 2);
+        GridOfSquares grid = new GridOfSquares(1, 2);
         Game game = new Game(grid);
         GridInitializer initializer = new GridInitializer(grid);
 
@@ -91,7 +91,7 @@ public class GameTest {
 
     @Test
     void flaggedCellCannotBeOpened(){
-        GirdOfSquares grid = new GirdOfSquares(2, 2);
+        GridOfSquares grid = new GridOfSquares(2, 2);
         Coordinate cell = new Coordinate(1,1);
 
         Game game = new Game(grid);
@@ -104,7 +104,7 @@ public class GameTest {
 
     @Test
     void openingCellWithZeroNeighborMinesRevealsNeighbors() {
-        GirdOfSquares grid = new GirdOfSquares(3,3);
+        GridOfSquares grid = new GridOfSquares(3,3);
 
         Game game = new Game(grid);
 
@@ -119,7 +119,7 @@ public class GameTest {
 
     @Test
     void flaggedCellCanBeUnflaggedAndOpened() {
-        GirdOfSquares grid = new GirdOfSquares(2,2);
+        GridOfSquares grid = new GridOfSquares(2,2);
         Coordinate c = new Coordinate(1,1);
 
         Game game = new Game(grid);

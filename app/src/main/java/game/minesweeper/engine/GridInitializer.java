@@ -3,7 +3,7 @@ package game.minesweeper.engine;
 
 import game.minesweeper.grid.Cell;
 import game.minesweeper.grid.Coordinate;
-import game.minesweeper.grid.GirdOfSquares;
+import game.minesweeper.grid.GridOfSquares;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -12,10 +12,10 @@ import java.util.Set;
 
 public class GridInitializer {
 
-    private final GirdOfSquares grid;
+    private final GridOfSquares grid;
     private Set<Coordinate> minesCoordinate = new HashSet<>();
 
-    public GridInitializer(GirdOfSquares grid) {
+    public GridInitializer(GridOfSquares grid) {
         this.grid = grid;
     }
 
@@ -46,7 +46,7 @@ public class GridInitializer {
         }
     }
 
-    public GirdOfSquares getGrid() {
+    public GridOfSquares getGrid() {
         return grid;
     }
 

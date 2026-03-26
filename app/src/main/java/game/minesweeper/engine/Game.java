@@ -2,14 +2,14 @@ package game.minesweeper.engine;
 
 import game.minesweeper.grid.Cell;
 import game.minesweeper.grid.Coordinate;
-import game.minesweeper.grid.GirdOfSquares;
+import game.minesweeper.grid.GridOfSquares;
 
 public class Game {
 
-    private final GirdOfSquares grid;
+    private final GridOfSquares grid;
     private GameState gameState = GameState.RUNNING;
 
-    public Game(GirdOfSquares grid) {
+    public Game(GridOfSquares grid) {
         this.grid = grid;
     }
 

@@ -2,11 +2,11 @@ package game.minesweeper.CLI;
 
 import game.minesweeper.grid.Cell;
 import game.minesweeper.grid.Coordinate;
-import game.minesweeper.grid.GirdOfSquares;
+import game.minesweeper.grid.GridOfSquares;
 
 public class GridPrinter {
 
-    public static void print(GirdOfSquares grid) {
+    public static void print(GridOfSquares grid) {
 
         String string = "   ";
 
