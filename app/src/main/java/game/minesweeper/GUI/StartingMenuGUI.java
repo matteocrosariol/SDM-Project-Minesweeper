@@ -72,8 +72,7 @@ public class StartingMenuGUI {
     }
 
     private void showCustomizeDialog() {
-        JDialog customizeDialog = new JDialog(frame, "Custom Game");
-        customizeDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        JWindow customizeDialog = new JWindow(frame);
 
         JPanel content = new JPanel(new GridLayout(4,2));
 
