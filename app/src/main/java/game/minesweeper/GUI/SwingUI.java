@@ -33,11 +33,25 @@ public class SwingUI {
     private void buildUI() {
         frame = new JFrame("Minesweeper");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
 
-        frame.add(buildGrid());
-
+        JPanel gridPanel = buildGrid();
+        JScrollPane scrollPane = new JScrollPane(gridPanel);
+        frame.add(scrollPane);
         frame.pack();
+
+        Rectangle usableScreen = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+
+        Dimension frameSize = frame.getSize();
+
+        if (frameSize.width > usableScreen.width || frameSize.height > usableScreen.height) {
+            frame.setResizable(true);
+            int cappedWidth = Math.min(frameSize.width, usableScreen.width);
+            int cappedHeight = Math.min(frameSize.height, usableScreen.height);
+            frame.setSize(cappedWidth, cappedHeight);
+        } else {
+            frame.setResizable(false);
+        }
+
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
