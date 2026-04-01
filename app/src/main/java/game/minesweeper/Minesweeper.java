@@ -3,7 +3,7 @@ package game.minesweeper;
 import game.minesweeper.CLI.ConsoleUI;
 import game.minesweeper.engine.Game;
 import game.minesweeper.engine.GameController;
-import game.minesweeper.engine.GridInitializer;
+import game.minesweeper.grid.Coordinate;
 import game.minesweeper.grid.GridOfSquares;
 
 import java.util.Scanner;
@@ -24,7 +24,7 @@ public class Minesweeper {
         do {
             GridOfSquares grid = startMenu();
 
-            Game game = new Game(grid);
+            Game<Coordinate> game = new Game<>(grid);
             GameController controller = new GameController(game);
 
             ConsoleUI ui = new ConsoleUI();

@@ -3,9 +3,9 @@ package game.minesweeper.engine;
 import game.minesweeper.grid.Coordinate;
 
 public class GameController {
-    private final Game game;
+    private final Game<Coordinate> game;
 
-    public GameController(Game game) {
+    public GameController(Game<Coordinate> game) {
         this.game = game;
     }
 

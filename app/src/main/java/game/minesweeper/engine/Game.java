@@ -1,19 +1,17 @@
 package game.minesweeper.engine;
 
-import game.minesweeper.grid.Cell;
-import game.minesweeper.grid.Coordinate;
-import game.minesweeper.grid.GridOfSquares;
+import game.minesweeper.grid.*;
 
-public class Game {
+public class Game<C extends CoordinateInterface> {
 
-    private final GridOfSquares grid;
+    private final AbstractGrid<C> grid;
     private GameState gameState = GameState.RUNNING;
 
-    public Game(GridOfSquares grid) {
+    public Game(AbstractGrid<C> grid) {
         this.grid = grid;
     }
 
-    public void openCell(Coordinate coordinate) {
+    public void openCell(C coordinate) {
 
         if (gameState != GameState.RUNNING) return;
 
@@ -32,7 +30,7 @@ public class Game {
         checkWinCondition();
     }
 
-    private void revealRecursively(Coordinate coordinate) {
+    private void revealRecursively(C coordinate) {
 
         Cell cell = grid.getCell(coordinate);
 
@@ -43,13 +41,13 @@ public class Game {
         cell.reveal();
 
         if (cell.neighborsMineCount() == 0) {
-            for (Coordinate neighbor : grid.getNeighborCoordinates(coordinate)) {
+            for (C neighbor : grid.getNeighborCoordinates(coordinate)) {
                 revealRecursively(neighbor);
             }
         }
     }
 
-    public void toggleFlag(Coordinate coordinate) {
+    public void toggleFlag(C coordinate) {
 
         if (gameState != GameState.RUNNING) return;
 
