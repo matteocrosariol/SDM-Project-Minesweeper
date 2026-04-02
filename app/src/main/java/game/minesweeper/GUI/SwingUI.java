@@ -22,7 +22,7 @@ public class SwingUI {
     private GameState gameState;
     private JFrame frame;
     private int mineCount;
-    private JLabel clock;
+    private TimerGUI timer;
     private JLabel unflaggedCounter;
     private int flagCount;
 
@@ -33,6 +33,7 @@ public class SwingUI {
         this.gameState = controller.getGameState();
         this.mineCount = mineCount;
         this.flagCount = 0;
+        this.timer = new TimerGUI();
         SwingUtilities.invokeLater(this::buildUI);
     }
 
@@ -105,6 +106,8 @@ public class SwingUI {
 
                 if (SwingUtilities.isLeftMouseButton(e)) {
 
+                    timer.start();
+
                     Cell cell = grid.getCell(row, column);
 
                     if (cell.isFlagged()) return;
@@ -114,6 +117,8 @@ public class SwingUI {
                     checkEndgame();
 
                 } else if (SwingUtilities.isRightMouseButton(e)) {
+
+                    timer.start();
 
                     Cell cell = grid.getCell(row, column);
 
@@ -148,6 +153,9 @@ public class SwingUI {
 
 
     private void showEndgameDialog(String title, String message) {
+
+        timer.stop();
+
         JDialog dialog = new JDialog(frame, title, true);
         dialog.setUndecorated(true);
 
@@ -228,10 +236,7 @@ public class SwingUI {
 
         header.setBorder(new EmptyBorder(10,10,10,10));
 
-        clock = new JLabel("Clock");
-        clock.setBackground(new Color(0, 0, 0));
-        clock.setOpaque(true);
-        header.add(clock, BorderLayout.CENTER);
+        header.add(timer, BorderLayout.CENTER);
 
         unflaggedCounter = new JLabel("Unflagged Mines: " + (mineCount - flagCount));
         unflaggedCounter.setBackground(new Color(0, 255, 255));
